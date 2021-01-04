@@ -1,0 +1,16 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "my blog repo",
+  "author": "Carberry",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "serve": "vitepress serve docs"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.30.0",
+    "vitepress": "^0.10.5"
+  }
+}
