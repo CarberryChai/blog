@@ -1,0 +1,1 @@
+import{l as a,f as n,G as s}from"./framework.5c8a4622.js";const t='{"title":"移动端键盘采坑记录","description":"","frontmatter":{},"relativePath":"frontend/Note-mobile-keybord-bugs.md","lastUpdated":1609742544038}',p={},o=s('',10);p.render=function(s,t,p,e,c,u){return a(),n("div",null,[o])};export default p;export{t as __pageData};
