@@ -1,15 +1,12 @@
+// @ts-check
+/**
+ * @type {import('vitepress').UserConfig}
+ */
 module.exports = {
   lang: 'zh-CN',
   base: '/blog/',
   title: `Carberry⚡`,
   description: 'Vite & Vue powered static site generator.',
-  head: [
-    [
-      'style',
-      {},
-      'img { border-radius: 10px }' + 'h1.title { margin-left: 0.5em }',
-    ],
-  ],
   themeConfig: {
     repo: 'carberrychai/blog',
     docsDir: 'docs',
