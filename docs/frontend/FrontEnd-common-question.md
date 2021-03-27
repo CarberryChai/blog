@@ -328,3 +328,74 @@ function foo() {
 这两个方法作用一模一样，都是给函数指定一个`this`取值，区别在于传参的形式不同。
 
 `call`需要把传入的参数意义指定，而`apply`需要传入一个数组或者类数组。（ps: 此句说的都是第二个参数）
+
+### 20、jsonp 的原理
+
+jsonp是一种跨域通信的手段，它的原理其实很简单：
+
+1. 首先是利用script标签的src的属性来实现跨域。
+2. 通过将前端方法作为参数传递到服务端，然后有服务端注入参数之后再返回，实现前后端通信。
+3. 由于script标签的src的属性限制，只能get请求。
+
+```js
+(function (global) {
+    var id = 0,
+        container = document.getElementsByTagName("head")[0];
+
+    function jsonp(options) {
+        if(!options || !options.url) return;
+
+        var scriptNode = document.createElement("script"),
+            data = options.data || {},
+            url = options.url,
+            callback = options.callback,
+            fnName = "jsonp" + id++;
+
+        // 添加回调函数
+        data["callback"] = fnName;
+
+        // 拼接url
+        var params = [];
+        for (var key in data) {
+            params.push(encodeURIComponent(key) + "=" + encodeURIComponent(data[key]));
+        }
+        url = url.indexOf("?") > 0 ? (url + "&") : (url + "?");
+        url += params.join("&");
+        scriptNode.src = url;
+
+        // 传递的是一个匿名的回调函数，要执行的话，暴露为一个全局方法
+        global[fnName] = function (ret) {
+            callback && callback(ret);
+            container.removeChild(scriptNode);
+            delete global[fnName];
+        }
+
+        // 出错处理
+        scriptNode.onerror = function () {
+            callback && callback({error:"error"});
+            container.removeChild(scriptNode);
+            global[fnName] && delete global[fnName];
+        }
+
+        scriptNode.type = "text/javascript";
+        container.appendChild(scriptNode)
+    }
+
+    global.jsonp = jsonp;
+
+})(this);
+```
+
+### 21、懒加载和预加载
+
+**懒加载也叫延迟加载，指的是在长网页中延迟加载图像，是一种很好优化网页性能的方式。** 用户滚动到他们之前，可视区域外的图像不会加载。这与图像预加载相反，在长网页中使用延迟加载将使网页加载更快。在某些情况下，它可以帮助减少服务器负载。常用于图片很多，页面很长的电商网站的场景。
+
+优势：
+
+- **提升用户体验**，不妨设想下，用户打开像手机淘宝长页面的时候，如果页面上所有的图片都需要加载，由于图片数目较大，等待时间较长，用户难免心生抱怨，这严重影响了用户体验。
+- **减少无效资源的加载**，这样能明显减少服务器的压力和流量。
+- **防止并发加载的资源过多会阻塞js的加载**，影响网站的正常使用。
+
+预加载：
+
+预加载简单来说就是将所有所需的资源提前请求加载到本地，这样后面再需要用到时就直接从缓存取资源
