@@ -1,1 +1,0 @@
-import{l as e,f as r,G as a}from"./framework.5c8a4622.js";const s='{"title":"Promise","description":"","frontmatter":{},"headers":[{"level":2,"title":"什么是 Promise?","slug":"什么是-promise"}],"relativePath":"frontend/Promise.md","lastUpdated":1609743247562}',i={},o=a('',4);i.render=function(a,s,i,t,m,d){return e(),r("div",null,[o])};export default i;export{s as __pageData};
