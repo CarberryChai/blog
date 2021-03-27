@@ -11,6 +11,6 @@
   "license": "MIT",
   "devDependencies": {
     "sass": "^1.30.0",
-    "vitepress": "^0.10.5"
+    "vitepress": "^0.12.2"
   }
 }

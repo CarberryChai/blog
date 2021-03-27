@@ -29,6 +29,15 @@ Watch：常用于监听某一数据变化执行一些异步或者开销较大的
 
 ### 4、双向数据响应原理（`v-model`）?
 
-`v-model`双向数据绑定本质就是一个语法糖，model => view 绑定就是view绑定一个响应式数据，数据变化就更新视图；
+`v-model`双向数据绑定本质就是一个语法糖：
 
-View => model 绑定就是监听用户输入事件，更新model
+- model => view 绑定就是view绑定一个响应式数据，数据变化就更新视图；
+- View => model 绑定就是监听用户输入事件，更新model
+
+### 5、Vue2的响应式原理
+
+![](https://cdn.jsdelivr.net/gh/CarberryChai/oss@master/image/Qt4Qt3-M2G5Qz.png)
+
+当创建Vue实例时，Vue会遍历`data`选项，并利用`Object.defineProperty`方法为属性添加`getter`和`setter`对数据的读写进行劫持。并且在内部追踪依赖，在属性被访问和修改时通知变更。
+
+每个组件实例都有相应的`Watcher`实例，称为渲染`Watcher`。它会在渲染的过程中把接触过的属性记录为依赖。之后当依赖性的`setter`触发时，会通知`watcher`，从而使与之关联的组件重新渲染。
