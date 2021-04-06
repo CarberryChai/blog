@@ -1,0 +1,1 @@
+import{o as n,c as s,a}from"./app.2378e4b4.js";const t='{"title":"LeetCode题解","description":"","frontmatter":{},"headers":[{"level":3,"title":"14、最长公共前缀","slug":"_14、最长公共前缀"}],"relativePath":"backend/LeetCode.md","lastUpdated":1617692535320}',p={},o=a('',13);p.render=function(a,t,p,e,c,u){return n(),s("div",null,[o])};export default p;export{t as __pageData};
