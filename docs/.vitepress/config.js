@@ -35,6 +35,10 @@ function getFrontendSidebar() {
           text: 'input number 那些坑',
           link: '/frontend/input-number-bugs',
         },
+        {
+          text: 'Javascript 基础',
+          link: '/frontend/basic-javascript',
+        },
         { text: 'Promise', link: '/frontend/Promise' },
         { text: '阿里OSS小试', link: '/frontend/Having-ali-OSS-a-try' },
       ],
