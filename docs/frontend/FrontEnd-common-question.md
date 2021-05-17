@@ -239,7 +239,7 @@ console.log(window.b) //undefined
 
 截止到 ES2020 JavaScript 有八种数据类型：
 
-七种基本类型：`Undefined`、`Null`、`Boplean`、`Number`、`String`、`Symbol`和`BigInt`
+七种基本类型：`Undefined`、`Null`、`Boolean`、`Number`、`String`、`Symbol`和`BigInt`
 
 一种引用类型：`Object`
 
@@ -335,6 +335,8 @@ jsonp是一种跨域通信的手段，它的原理其实很简单：
 2. 通过将前端方法作为参数传递到服务端，然后有服务端注入参数之后再返回，实现前后端通信。
 3. 由于script标签的src的属性限制，只能get请求。
 
+> 前端事先定义一个用于接收数据的全局回调函数，这个函数名作为URL的一部分利用script标签src属性实现跨域，后端返回回调函数的执行，数据作为函数的参数，前端接收到响应会立即执行该回调。
+
 ```js
 (function (global) {
     var id = 0,
@@ -397,3 +399,18 @@ jsonp是一种跨域通信的手段，它的原理其实很简单：
 预加载：
 
 预加载简单来说就是将所有所需的资源提前请求加载到本地，这样后面再需要用到时就直接从缓存取资源
+
+## 22、js执行会阻塞DOM树的解析和渲染，那么css加载会阻塞DOM树的解析和渲染吗？
+
+- css加载不会阻塞DOM数的解析
+- css加载会阻塞DOM树的渲染
+- css加载会阻塞后面js语句的执行
+
+[css加载会造成阻塞吗?](https://juejin.cn/post/6844903667733118983)
+
+## 23、如何判断两个变量相等
+
+`Object.is` 
+
+[see detail](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)
+
