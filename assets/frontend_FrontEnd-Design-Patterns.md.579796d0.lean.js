@@ -1,0 +1,1 @@
+import{o as n,c as s,a}from"./app.0bf1fc6c.js";const t='{"title":"设计模式","description":"","frontmatter":{},"headers":[{"level":2,"title":"1、单例模式","slug":"_1、单例模式"}],"relativePath":"frontend/FrontEnd-Design-Patterns.md","lastUpdated":1621234023496}',p={},o=a('',5);p.render=function(a,t,p,e,c,u){return n(),s("div",null,[o])};export default p;export{t as __pageData};
